@@ -1,0 +1,27 @@
+services:
+  uab-campus-mcp:
+    build: .
+    restart: unless-stopped
+    environment:
+      UAB_TOKEN_FILE: /data/tokens.json
+      UAB_REQUEST_TIMEOUT_MS: ${UAB_REQUEST_TIMEOUT_MS:-30000}
+      MCP_HTTP_TOKEN: ${MCP_HTTP_TOKEN:?Set MCP_HTTP_TOKEN in .env}
+      MCP_ALLOWED_HOSTS: ${MCP_ALLOWED_HOSTS:-localhost,127.0.0.1}
+      MCP_HOST: 0.0.0.0
+      MCP_PORT: 3000
+    ports:
+      - "127.0.0.1:${MCP_PORT:-3000}:3000"
+    volumes:
+      - ./data/tokens.json:/data/tokens.json:ro
+    read_only: true
+    tmpfs:
+      - /tmp:size=16m,mode=1777
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:3000/health').then(r=>{if(!r.ok)process.exit(1)}).catch(()=>process.exit(1))"]
+      interval: 30s
+      timeout: 5s
+      retries: 3

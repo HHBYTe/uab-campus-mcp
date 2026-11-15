@@ -1,0 +1,62 @@
+{
+  "name": "uab-campus-mcp",
+  "version": "0.0.0",
+  "description": "Read-only MCP server for UAB Campus Virtual",
+  "type": "module",
+  "private": true,
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HHBYTe/uab-campus-mcp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/HHBYTe/uab-campus-mcp/issues"
+  },
+  "homepage": "https://github.com/HHBYTe/uab-campus-mcp#readme",
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "uab",
+    "moodle"
+  ],
+  "bin": {
+    "uab-campus-mcp": "dist/index.js"
+  },
+  "files": [
+    "dist",
+    "scripts",
+    "README.md"
+  ],
+  "scripts": {
+    "auth": "node scripts/auth.mjs",
+    "auth:check": "node scripts/check-tokens.mjs",
+    "build": "tsc -p tsconfig.json",
+    "check": "tsc -p tsconfig.json --noEmit",
+    "dev": "tsx src/index.ts",
+    "doctor": "node scripts/doctor.mjs",
+    "start": "node dist/index.js",
+    "start:http": "node dist/http.js",
+    "smoke:live": "tsx scripts/live-smoke.ts",
+    "test": "node --test --import tsx test/*.test.ts",
+    "test:protocol": "npm run build && node --test --import tsx test/protocol.test.ts"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@hono/node-server": "2.1.8",
+    "@modelcontextprotocol/node": "^2.1.2",
+    "@modelcontextprotocol/server": "2.4.0",
+    "html-to-text": "^10.0.1",
+    "pdfjs-dist": "^4.10.38",
+    "zod": "4.6.7"
+  },
+  "devDependencies": {
+    "@modelcontextprotocol/client": "2.4.0",
+    "@types/html-to-text": "^9.0.4",
+    "@types/node": "^24.10.0",
+    "playwright": "^1.64.1",
+    "tsx": "4.23.15",
+    "typescript": "7.0.2"
+  }
+}
