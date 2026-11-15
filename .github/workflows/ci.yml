@@ -18,7 +18,8 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
-      - run: node --check scripts/auth.mjs && node --check scripts/check-tokens.mjs && node --check scripts/doctor.mjs
+      - run: node --check scripts/auth.mjs && node --check scripts/check-tokens.mjs && node --check scripts/doctor.mjs && node --check scripts/check-version.mjs
+      - run: npm run check:version
       - run: npm run check
       - run: npm run build
       - run: npm test

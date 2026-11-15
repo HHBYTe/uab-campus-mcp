@@ -6,13 +6,10 @@ Updating never requires a new UAB login: `data/tokens.json` and
 
 ## Before updating
 
-Check what changed since your version. The current version is in
-`package.json`; the commit history lists every change:
-
-```bash
-git fetch
-git log --oneline HEAD..origin/main
-```
+Check what changed since your version in the [changelog](../CHANGELOG.md)
+or the [GitHub releases](https://github.com/HHBYTe/uab-campus-mcp/releases).
+Your current version is in `package.json`. Changes that can break scripts or
+prompts are listed under **Breaking**.
 
 Tool output can change between versions, for example when fields are renamed
 or responses are made more compact. If you have scripts or prompts that read

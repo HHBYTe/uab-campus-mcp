@@ -32,6 +32,7 @@
     "auth:check": "node scripts/check-tokens.mjs",
     "build": "tsc -p tsconfig.json",
     "check": "tsc -p tsconfig.json --noEmit",
+    "check:version": "node scripts/check-version.mjs",
     "dev": "tsx src/index.ts",
     "doctor": "node scripts/doctor.mjs",
     "start": "node dist/index.js",

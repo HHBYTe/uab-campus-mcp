@@ -220,9 +220,9 @@ npm ci --include=dev
 npm run build
 ```
 
-Your UAB tokens are kept. The [updating guide](docs/updating.md) covers
-self-hosted deployments, checking what changed, clients that cache the tool
-list, and rolling back.
+Your UAB tokens are kept. See the [changelog](CHANGELOG.md) for what changed
+in each version. The [updating guide](docs/updating.md) covers self-hosted
+deployments, clients that cache the tool list, and rolling back.
 
 ## Self-hosted setup
 
